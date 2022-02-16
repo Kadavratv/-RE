@@ -28,8 +28,8 @@ K_G = Client(
 
 # Start Buttonu İcin Def Oluşturalım :)
 def button():
-	BUTTON=[[InlineKeyboardButton(text="👨‍💻 Sahibim",url="t.me/muellime")]]
-	BUTTON+=[[InlineKeyboardButton(text="📣 Kanal",url="t.me/ElxanBots")]]
+	BUTTON=[[InlineKeyboardButton(text="👨‍💻 Sahibim",url="t.me/Rotabots")]]
+	BUTTON+=[[InlineKeyboardButton(text="📣 Kanal",url="t.me/RotaKanal")]]
 	return InlineKeyboardMarkup(BUTTON)
 
 # Kullanıcı Start Komutunu Kullanınca Selam'layalım :)
@@ -37,7 +37,7 @@ def button():
 async def _(client, message):
 	user = message.from_user # Kullanıcın Kimliğini Alalım
 
-	await message.reply_text(text="**Salam {}!**\n\n__Mən Pyrogram ilə yazılmış əyləncə botuyam :)__\n\n**Repom =>** [Open Source](https://github.com/AkinYoungSoftware/TgEglenceBot)\nDoğruluq yoxsa Cəsarət? Oyun Əmri => /dc".format(
+	await message.reply_text(text="**Salam {}!**\n\n__Mən Dert ile yazılan tatlı bir oyunum :)__\n\n**Repom =>** [Rota İrem](https://t.me/rotakanal)\nDogruluk mu İrem mi oyudur => /irem".format(
 		user.mention, # Kullanıcı'nın Adı
 		),
 	disable_web_page_preview=True, # Etiketin Önizlemesi Olmaması İcin Kullanıyoruz
@@ -51,7 +51,7 @@ def d_or_c(user_id):
 	return InlineKeyboardMarkup(BUTTON)
 
 # Dc Komutunu Oluşturalım
-@K_G.on_message(filters.command("dc"))
+@K_G.on_message(filters.command("irem"))
 async def _(client, message):
 	user = message.from_user
 
