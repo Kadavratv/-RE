@@ -37,7 +37,7 @@ def button():
 async def _(client, message):
 	user = message.from_user # Kullanıcın Kimliğini Alalım
 
-	await message.reply_text(text="**Salam {}!**\n\n__Mən Dert ile yazılan tatlı bir oyunum :)__\n\n**Repom =>** [Rota İrem](https://t.me/rotakanal)\nDogruluk mu İrem mi oyudur => /irem".format(
+	await message.reply_text(text="**Merhaba {}!**\n\n__Ben Dert ile yazılan tatlı bir oyunum :)__\n\n**Rota İrem =>** [Rota İrem](https://t.me/rotakanal)\nDogruluk mu İrem mi oyudur komutu 😣 /irem olarak ayarlanmıştır".format(
 		user.mention, # Kullanıcı'nın Adı
 		),
 	disable_web_page_preview=True, # Etiketin Önizlemesi Olmaması İcin Kullanıyoruz
@@ -72,20 +72,20 @@ async def _(client, callback_query):
 	if str(user.id) == str(user_id):
 		# Kullanıcının Doğruluk Sorusu İstemiş İse Bu Kısım Calışır
 		if c_q_d == "d_data":
-			await callback_query.answer(text="Doğruluq Sualını İstədiniz", show_alert=False) # İlk Ekranda Uyarı Olarak Gösterelim
+			await callback_query.answer(text="Doğruları söylemeyi seçtiniz", show_alert=False) # İlk Ekranda Uyarı Olarak Gösterelim
 			await client.delete_messages(
 				chat_id=callback_query.message.chat.id,
 				message_ids=callback_query.message.message_id) # Eski Mesajı Silelim
 
-			await callback_query.message.reply_text("**{user} Doğruluq Sualı İstədi:** __{d_soru}__".format(user=user.mention, d_soru=d_soru)) # Sonra Kullanıcıyı Etiketleyerek Sorusunu Gönderelim
+			await callback_query.message.reply_text("**{user} Doğruları söylemek istedi:** __{d_soru}__".format(user=user.mention, d_soru=d_soru)) # Sonra Kullanıcıyı Etiketleyerek Sorusunu Gönderelim
 			return
 
 		if c_q_d == "c_data":
-			await callback_query.answer(text="Cəsarət Sualını İstədiniz", show_alert=False)
+			await callback_query.answer(text="İrem olmak istedi", show_alert=False)
 			await client.delete_messages(
 				chat_id=callback_query.message.chat.id,
 				message_ids=callback_query.message.message_id)
-			await callback_query.message.reply_text("**{user} Cəsarət Sualı İstədi** __{c_soru}__".format(user=user.mention, c_soru=c_soru))
+			await callback_query.message.reply_text("**{user} İrem olmak istedi** __{c_soru}__".format(user=user.mention, c_soru=c_soru))
 			return
 
 
@@ -102,10 +102,10 @@ async def _(client, message):
   user = message.from_user
   
   if user.id not in OWNER_ID:
-    await message.reply_text("**[?]** **Sən Admin Deyilsən!**")
+    await message.reply_text("**[?]** **Sen admin degilsin!**")
     return
   MOD="cekle"
-  await message.reply_text("**[?]** **Əlavə etmək istədiyiniz Cəsarət Sualını daxil edin!**")
+  await message.reply_text("**[?]** **eklemek istediğiniz İrem sorusunu yazın!**")
   
 @K_G.on_message(filters.command("dekle"))
 async def _(client, message):
@@ -113,10 +113,10 @@ async def _(client, message):
   user = message.from_user
   
   if user.id not in OWNER_ID:
-    await message.reply_text("**[?]** **Sən Admin Deyilsən!**")
+    await message.reply_text("**[?]** **Sen admin degilsin!**")
     return
   MOD="cekle"
-  await message.reply_text("**[?]** **Əlavə etmək istədiyiniz Doğruluq Sualını daxil edin!**")
+  await message.reply_text("**[?]** **Eklemek istediğiniz doğruluk sorusunu yazın!**")
 
 @K_G.on_message(filters.private)
 async def _(client, message):
@@ -130,12 +130,12 @@ async def _(client, message):
     if MOD=="cekle":
       C_LİST.append(str(message.text))
       MOD=None
-      await message.reply_text("**[?]** __Mətn Cəsarət Sualı kimi əlavə edildi!__")
+      await message.reply_text("**[?]** __İrem sorusu eklendi!__")
       return
     if MOD=="dekle":
       C_LİST.append(str(message.text))
       MOD=None
-      await message.reply_text("**[?]** __Mətn Doğruluq Sualı kimi əlavə edildi!__")
+      await message.reply_text("**[?]** __Doğruluk sorusu eklendi!__")
       return
 ############################
 
